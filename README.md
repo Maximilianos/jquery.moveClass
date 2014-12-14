@@ -36,5 +36,3 @@ $('.tabs').each(function () {
   });
 });
 ```
-
-Notice that for the `nav` elements `moveClass` is accepting
