@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en_US">
+	<head>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Step Js Fade In template</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      big {
+        display: block;
+        font-family: serif;
+        font-size: 60px;
+        line-height: 100px;
+        text-align: center;
+      }
+
+      .tabs {
+        margin: 50px auto;
+        max-width: 500px;
+      }
+
+      .tabs__nav-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tabs__nav-list:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+
+      .tabs__nav {
+        float: left;
+        padding: 10px 30px;
+        cursor: pointer;
+        -webkit-transition: 0.4s ease-out;
+                transition: 0.4s ease-out;
+      }
+
+      .tabs__nav:hover {
+        background: rgba(60, 179, 113, 0.4);
+      }
+
+      .tabs__nav--active {
+        color: white;
+        background: mediumseagreen;
+      }
+
+      .tabs__wrap {
+        position: relative;
+      }
+
+      .tabs__tab {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px 30px;
+        width: 100%;
+        min-height: 100px;
+        color: white;
+        background: mediumseagreen;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .tabs__tab--active {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+	</head>
+
+	<body>
+
+		<header>
+			<h1>jQuery.moveClass - Tabs Demo</h1>
+		</header>
+		
+    <section class="tabs">
+      <ul class="tabs__nav-list">
+        <li class="tabs__nav tabs__nav--active">Tab 1</li>
+        <li class="tabs__nav">Tab 2</li>
+        <li class="tabs__nav">Tab 3</li>
+      </ul>
+      <div class="tabs__wrap">
+        <section class="tabs__tab tabs__tab--active">
+          <big>1</big>
+        </section>
+        <section class="tabs__tab">
+          <big>2</big>
+        </section>
+        <section class="tabs__tab">
+          <big>3</big>
+        </section>
+      </div>
+    </section>
+		
+    <section class="tabs">
+      <ul class="tabs__nav-list">
+        <li class="tabs__nav tabs__nav--active">Tab 1</li>
+        <li class="tabs__nav">Tab 2</li>
+        <li class="tabs__nav">Tab 3</li>
+      </ul>
+      <div class="tabs__wrap">
+        <section class="tabs__tab tabs__tab--active">
+          <big>1</big>
+        </section>
+        <section class="tabs__tab">
+          <big>2</big>
+        </section>
+        <section class="tabs__tab">
+          <big>3</big>
+        </section>
+      </div>
+    </section>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../../moveClass.jquery.js"></script>
+    <script>
+      $('.tabs').each(function () {
+        var module = $(this),
+          nav = module.find('.tabs__nav'),
+          tabs = module.find('.tabs__tab');
+
+        module.on('click', '.tabs__nav', function () {
+          nav.moveClass('tabs__nav--active', $(this));
+          tabs.moveClass('tabs__tab--active', $(this).index());
+        });
+      });
+    </script>
+
+	</body>
+</html>

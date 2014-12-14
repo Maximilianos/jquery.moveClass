@@ -25,14 +25,16 @@ To see an example of usage let's consider the tabs use case
 The `js` for this case could look something like the following:
 
 ```javascript
-var tabModule = $('.tabs'),
-  tabNav = tabModule.find('.tabs__nav'),
-  tabs = tabModule.find('.tabs__tab');
+$('.tabs').each(function () {
+  var module = $(this),
+    nav = module.find('.tabs__nav'),
+    tabs = module.find('.tabs__tab');
 
-tabModule.on('click', '.tabs__nav', function () {
-  var clickedNav = $(this);
-  
-  tabNav.moveClass('tabs__nav--active', clickedNav);
-  tabs.moveClass('tabs__tab--active', clickedNav.index());
+  module.on('click', '.tabs__nav', function () {
+    nav.moveClass('tabs__nav--active', $(this));
+    tabs.moveClass('tabs__tab--active', $(this).index());
+  });
 });
 ```
+
+Notice that for the `nav` elements `moveClass` is accepting
