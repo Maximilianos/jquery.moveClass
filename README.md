@@ -25,14 +25,15 @@ To see an example of usage let's consider the tabs use case
 The `js` for this case could look something like the following:
 
 ```javascript
-$('.tabs').each(function () {
-  var module = $(this),
-    nav = module.find('.tabs__nav'),
-    tabs = module.find('.tabs__tab');
+$('.tabs').each(() => {
+  const module = $(this);
+  const navLinks = module.find('.tabs__nav');
+  const tabs = module.find('.tabs__tab');
 
-  module.on('click', '.tabs__nav', function () {
-    nav.moveClass('tabs__nav--active', $(this));
-    tabs.moveClass('tabs__tab--active', $(this).index());
+  module.on('click', '.tabs__nav', () => {
+    const clickedNavLink = $(this);
+    navLinks.moveClass('tabs__nav--active', clickedNavLink);
+    tabs.moveClass('tabs__tab--active', clickedNavLink.index());
   });
 });
 ```
